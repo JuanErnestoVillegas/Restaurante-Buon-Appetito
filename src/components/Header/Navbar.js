@@ -43,7 +43,11 @@ const Navbar = () => {
               <Link className="navbar_link" to="/aboutUs"><MdOutlineSocialDistance className="m-2"/>Nosotros</Link>
             </li>
             <li className="navbar_item" >
+<<<<<<< HEAD
               <Link className="navbar_link" to="contact"><MdOutlineContactSupport className="m-2"/>Contacto</Link>
+=======
+              <Link className="navbar_link" to="/contacto"><MdOutlineContactSupport className="m-2"/>Contacto</Link>
+>>>>>>> 652b8119c41ca3da5cfc97f33d7eb912c26872c6
             </li>
             </>
             :
@@ -53,7 +57,11 @@ const Navbar = () => {
               <Link className="navbar_link" to="/aboutUs"><MdOutlineSocialDistance className="m-2"/>Nosotros</Link>
             </li>
             <li className="navbar_item" >
+<<<<<<< HEAD
               <Link className="navbar_link" to="/contact"><MdOutlineContactSupport className="m-2"/>Contacto</Link>
+=======
+              <Link className="navbar_link" to="/contacto"><MdOutlineContactSupport className="m-2"/>Contacto</Link>
+>>>>>>> 652b8119c41ca3da5cfc97f33d7eb912c26872c6
             </li>
             <li className="navbar_item" >
               <Link className="navbar_link" to="#" onClick={logout}><MdOutlineContactSupport className="m-2" />Cerrar sesión</Link>
@@ -73,7 +81,11 @@ const Navbar = () => {
               <Link className="navbar_link" to="/aboutUs"><MdOutlineSocialDistance className="m-2"/>Nosotros</Link>
             </li>
             <li className="navbar_item" >
+<<<<<<< HEAD
               <Link className="navbar_link" to="/contact"><MdOutlineContactSupport className="m-2"/>Contacto</Link>
+=======
+              <Link className="navbar_link" to="/contacto"><MdOutlineContactSupport className="m-2"/>Contacto</Link>
+>>>>>>> 652b8119c41ca3da5cfc97f33d7eb912c26872c6
             </li>
             </>
             }
