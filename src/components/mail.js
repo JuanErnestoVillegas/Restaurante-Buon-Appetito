@@ -26,12 +26,22 @@ const Mail = () => {
  
   return (
     <form ref={form} onSubmit={sendEmail}>
-      <label>Name</label>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <label>Name: </label>
+      <br />
       <input type="text" id="user_name" name="user_name" />
-      <label>Email</label>
+      <br />
+      <label>Email: </label>
+      <br />
       <input type="email" id="user_email" name="user_email" />
-      <label>Message</label>
-      <textarea name="message" />
+      <br />
+      {/* <label>Message</label> */}
+      {/* <textarea name="message" /> */}
+      <br />
       <input type="submit" value="Send" />
     </form>
   );

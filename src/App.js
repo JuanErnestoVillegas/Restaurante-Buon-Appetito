@@ -13,6 +13,8 @@ import PrivateRoute from "./routes/PrivateRoute";
 import ProductsProvider from "./context/ProductsContext";
 import ProductDetail from "./pages/ProductDetail";
 import Products from "./pages/Products";
+import ContactForm from "./components/ContactForm/ContactForm";
+import Mail from "./components/mail"
 
 function App() {
   return (
@@ -29,7 +31,9 @@ function App() {
                 <Route path="/products" element={<PrivateRoute><Products /></PrivateRoute>} />
                 <Route path="/carrito" element={<CartPage />} />
                 <Route path="/aboutUs" element={<AboutUs />} />
+                <Route path="/contact" element={<ContactForm />} />
                 <Route path="/product/:id" element={<PrivateRoute><ProductDetail /></PrivateRoute>}/>
+                <Route path="/mail" element={<Mail />} />
               </Routes>
             </Layout>
           </ProductsProvider>

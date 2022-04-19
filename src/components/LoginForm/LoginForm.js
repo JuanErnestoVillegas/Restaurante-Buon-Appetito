@@ -6,6 +6,7 @@ import { UserContext } from '../../context/UserContext';
 import { validationLogin } from '../../helpers/validations';
 import useForm from '../../hooks/useForm';
 import {BiUserPin} from 'react-icons/bi';
+import mail from '../mail';
 import './LoginForm.css'
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -78,8 +79,10 @@ const LoginForm = () =>{
           Registrarse
           </Link>
       </Button>
-      <Button variant="danger" className="login-button mt-1 mb-1 d-flex center" type="submit">
+      <Button variant="danger" className="login-button mt-1 mb-1 d-flex center" type="submit">        
+        <Link to="/mail">
         Olvidé mi contraseña
+          </Link>
       </Button>
       </div>
       <div className='errors'>
