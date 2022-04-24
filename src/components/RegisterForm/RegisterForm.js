@@ -8,6 +8,7 @@ import Mail from '../mail';
 import ModalRegister from '../ModalRegister/ModalRegister';
 import './RegisterForm.css'
 
+
 const RegisterForm = () => {
   const [users, setUsers] = useState([]);
   const [show, setShow] = useState(false);
@@ -25,9 +26,10 @@ const RegisterForm = () => {
       console.log(error);
     }
   };
+
   const deleteUser = async () => {
     try {
-      await axiosClient.delete("users/" + selected);
+      await axiosClient.delete("users",{id:selected});
       setUsers(users.filter((user) => user._id != selected));
     } catch (error) {
       console.log(error);
@@ -69,7 +71,7 @@ const RegisterForm = () => {
                   <td>{user.name}</td>
                   <td>{user.lastname}</td>
                   <td>{user.email}</td>
-                  <td>{user.rol}</td>
+                  <td>{user.role}</td>
                   <td>
                     <Link to={`/user/${user._id}`}>
                       Detalle de Usuario
@@ -86,7 +88,7 @@ const RegisterForm = () => {
                   <td>{user.name}</td>
                   <td>{user.lastname}</td>
                   <td>{user.email}</td>
-                  <td>{user.rol}</td>
+                  <td>{user.role}</td>
                   <td>
                     <Link to={`/user/${user._id}`}>
                       Detalle de Usuario
@@ -103,9 +105,6 @@ const RegisterForm = () => {
           setUsers={setUsers}
           users={users}
         />
-        <Button className='mail-button' type="submit" onClick={<Link to={`/mail`}>
-                      Mail
-                    </Link>}></Button>
       </Container>
     </>
   );

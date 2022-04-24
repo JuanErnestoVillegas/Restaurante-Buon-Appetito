@@ -13,11 +13,8 @@ import PrivateRoute from "./routes/PrivateRoute";
 import ProductsProvider from "./context/ProductsContext";
 import ProductDetail from "./pages/ProductDetail";
 import Products from "./pages/Products";
+import Mail from "./components/mail";
 import ContactForm from "./components/ContactForm/ContactForm";
-<<<<<<< HEAD
-import Mail from "./components/mail"
-=======
->>>>>>> 652b8119c41ca3da5cfc97f33d7eb912c26872c6
 
 function App() {
   return (
@@ -34,14 +31,9 @@ function App() {
                 <Route path="/admin" element={<PrivateRoute><Admin /></PrivateRoute>} />
                 <Route path="/products" element={<PrivateRoute><Products /></PrivateRoute>} />
                 <Route path="/carrito" element={<CartPage />} />
-                <Route path="/aboutUs" element={<AboutUs />} />
-<<<<<<< HEAD
-                <Route path="/contact" element={<ContactForm />} />
+                <Route path="/aboutUs" element={<AboutUs />} />                
                 <Route path="/product/:id" element={<PrivateRoute><ProductDetail /></PrivateRoute>}/>
                 <Route path="/mail" element={<Mail />} />
-=======
-                <Route path="/product/:id" element={<ProductDetail />}/>
->>>>>>> 652b8119c41ca3da5cfc97f33d7eb912c26872c6
               </Routes>
             </Layout>
           </ProductsProvider>
@@ -52,3 +44,4 @@ function App() {
 }
 
 export default App;
+

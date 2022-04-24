@@ -1,27 +1,47 @@
-import { Modal, Button, FloatingLabel, Form , DropdownButton, Dropdown} from "react-bootstrap";
+import React, {useState, useContext} from "react";
+import { Modal, Button, FloatingLabel, Form, Alert } from "react-bootstrap";
 import axiosClient from "../../config/axiosClient";
-import { LOGIN_VALUES } from "../../constants";
+import { REGISTER_VALUES } from "../../constants";
+import { validateRegister } from '../../helpers/validations';
 import useForm from "../../hooks/useForm";
 import "./ModalRegister.css";
+import { UserContext } from "../../context/UserContext";
+import Swal from "sweetalert2";
+
+
+const sweetalert2 = (titulo, msj) =>{
+  Swal.fire({
+    title: titulo,
+    html: msj,
+   })
+
+}
 
 const ModalRegister = ({ show, handleClose, setUsers, users }) => {
+  const [errorsR, setErrorsR] = useState(null); 
+  const {auth, user} = useContext(UserContext);
+  
   const addUser = async (info) => {
     try {
       const response = await axiosClient.post("/users", info);
       console.log(response.data);
-      setUsers([...users, response.data.useradd]);
+      setUsers([...users, response.data.useradd]);  
     } catch (error) {
-      console.log(error);
+      console.log(error);      
+      sweetalert2('Error!', error.response.data.msg);
     }
   };
-  const { handleSubmit, handleKeyUp } = useForm(LOGIN_VALUES, addUser);
+
+  // const { handleSubmit, handleKeyUp } = useForm(REGISTER_VALUES, addUser);
+   const { handleSubmit, handleKeyUp, values, errors } = useForm(REGISTER_VALUES, addUser, validateRegister);
+
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Agregar Usuario</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form onSubmit={handleSubmit} className="h-100">
+       <form onSubmit={handleSubmit} className="h-100">
           <FloatingLabel
             controlId="floatingInput"
             label="Nombre"
@@ -57,7 +77,7 @@ const ModalRegister = ({ show, handleClose, setUsers, users }) => {
               type="email"
               placeholder="Email"
               onKeyUp={handleKeyUp}
-              name="mail"
+              name="email"
               className=""
             />
           </FloatingLabel>                              
@@ -86,11 +106,23 @@ const ModalRegister = ({ show, handleClose, setUsers, users }) => {
               name="password2"
               className=""
             />
-          </FloatingLabel>   
-          <DropdownButton id="dropdown-variants-secondary" className="m-1 modal-boton w-75" variant='secondary' title="Rol" name="role">
-              <Dropdown.Item href="#/action-1">USER</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">ADMIN</Dropdown.Item>
-           </DropdownButton>
+          </FloatingLabel>  
+             {
+          user?.role=='ADMIN'?          
+              <Form.Select name="role" id="roleSelect" onChange={handleKeyUp}>
+              <option value="USER">USER</option>
+              <option value="ADMIN">ADMIN</option>
+              
+              </Form.Select>
+            
+            :   
+            
+            <Form.Select name="role" id="roleSelect" onChange={handleKeyUp}>
+              <option value="USER">USER</option>            
+            </Form.Select>
+}
+        
+
           <Button
             className="m-1 modal-boton"
             type="submit"
@@ -98,6 +130,15 @@ const ModalRegister = ({ show, handleClose, setUsers, users }) => {
           >
             Agregar
           </Button>
+          <div className="errorsR">
+            {Object.keys(errors).length === 0
+              ? null
+              : Object.values(errors).map((error, index) => (
+                  <Alert key={index} variant="danger" className="mt-0">
+                    {error}
+                  </Alert>
+                ))}
+          </div>
         </form>
       </Modal.Body>
     </Modal>

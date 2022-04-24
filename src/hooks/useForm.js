@@ -33,6 +33,8 @@ const useForm = (initialValues, submit, validation) => {
     setSubmitting(true);   
   }
 
+console.log(values);
+
   return {
     values,
     handleKeyUp,
