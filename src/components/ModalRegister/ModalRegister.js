@@ -18,7 +18,7 @@ const sweetalert2 = (titulo, msj) =>{
 }
 
 const ModalRegister = ({ show, handleClose, setUsers, users }) => {
-  const [errorsR, setErrorsR] = useState(null); 
+  // const [errorsR, setErrorsR] = useState(null); 
   const {auth, user} = useContext(UserContext);
   
   const addUser = async (info) => {
@@ -27,8 +27,8 @@ const ModalRegister = ({ show, handleClose, setUsers, users }) => {
       console.log(response.data);
       setUsers([...users, response.data.useradd]);  
     } catch (error) {
-      console.log(error);      
-      sweetalert2('Error!', error.response.data.msg);
+      console.log(error.response.data.msg);               
+      sweetalert2("Error", error.response.data.msg);
     }
   };
 
@@ -117,11 +117,10 @@ const ModalRegister = ({ show, handleClose, setUsers, users }) => {
             
             :   
             
-            <Form.Select name="role" id="roleSelect" onChange={handleKeyUp}>
+            <Form.Select name="role" id="roleSelect" onClick={handleKeyUp}>
               <option value="USER">USER</option>            
             </Form.Select>
-}
-        
+          }
 
           <Button
             className="m-1 modal-boton"

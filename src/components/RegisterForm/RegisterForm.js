@@ -12,10 +12,12 @@ import './RegisterForm.css'
 const RegisterForm = () => {
   const [users, setUsers] = useState([]);
   const [show, setShow] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
   const [selected, setSelected] = useState(null);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleEdit = () => setShowEdit(true);
 
   const getUsers = async () => {
     try {
@@ -73,9 +75,9 @@ const RegisterForm = () => {
                   <td>{user.email}</td>
                   <td>{user.role}</td>
                   <td>
-                    <Link to={`/user/${user._id}`}>
-                      Detalle de Usuario
-                    </Link>
+                  <Button variant="success" onClick={handleEdit} className="m-3">
+                      Editar
+                  </Button>
                   </td>
                 </tr>
               ) : (
@@ -90,9 +92,9 @@ const RegisterForm = () => {
                   <td>{user.email}</td>
                   <td>{user.role}</td>
                   <td>
-                    <Link to={`/user/${user._id}`}>
-                      Detalle de Usuario
-                    </Link>
+                  <Button variant="success" onClick={handleEdit} className="m-3">
+                      Editar
+                  </Button>
                   </td>
                 </tr>
               )

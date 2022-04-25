@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import {validationLogin } from './../helpers/validations';
-// import {validationLogin , validateRegister} from './../helpers/validations';
 
 const useForm = (initialValues, submit, validation) => {
   const [values, setValues] = useState(initialValues);
@@ -28,8 +27,7 @@ const useForm = (initialValues, submit, validation) => {
       setErrors(validation(values));
     }else{
       setErrors({});
-    }
-    // setErrors(validateRegister(values));  
+    }     
     setSubmitting(true);   
   }
 

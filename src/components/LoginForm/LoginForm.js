@@ -10,6 +10,7 @@ import './LoginForm.css'
 import { Link, useNavigate } from 'react-router-dom';
 import useForm from "../../hooks/useForm";
 import { AiOutlineLogin } from "react-icons/ai";
+import ModalRegister from '../ModalRegister/ModalRegister';
 import './LoginForm.css';
 
 
@@ -17,6 +18,13 @@ import './LoginForm.css';
 const LoginForm = () =>{
   const [error, setError] = useState(null); 
   const {user, login, auth} = useContext(UserContext);
+
+
+  const [users, setUsers] = useState([]);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
 
   const navigate = useNavigate();
   useEffect(()=>{
@@ -90,17 +98,22 @@ const LoginForm = () =>{
             >
               Ingresar
             </Button>
-            <Button
+            <Button variant="light" onClick={handleShow} className="login-button mt-1 mb-1">
+               Registrarse
+            </Button>
+
+            {/* <Button
               variant="light"
               className="login-button mt-1 mb-1"
               type="submit"
             >
+
                      <Link to={`/register`}>
                             Registrarse
                     </Link>
 
 
-            </Button>
+            </Button> */}
             <Button
               variant="danger"
               className="login-button mt-1 mb-1 d-flex center"
@@ -124,7 +137,12 @@ const LoginForm = () =>{
         </Form>
       </div>
       </div>
-
+      <ModalRegister
+          show={show}
+          handleClose={handleClose}
+          setUsers={setUsers}
+          users={users}
+        />
     </div>
   );
 };

@@ -23,8 +23,8 @@ export const validationLogin = (values) =>{
     if (!values.name) {
         errorsR.name = 'Nombre requerido';
     } 
-    if (values.name.length < 3 || values.name.length >20) {
-        errorsR.name = 'El nombre debe tener entre 3 y 20 letras';
+    if (values.name.length < 3 || values.name.length >15) {
+        errorsR.name = 'El nombre debe tener entre 3 y 15 letras';
     }
     if (!values.lastname) {
         errorsR.name = 'Apellido requerido';
@@ -42,8 +42,8 @@ export const validationLogin = (values) =>{
     if (!values.password) {
         errorsR.password = 'Contraseña requerida';
     } 
-    if (values.password.length < 8 || values.password.length > 16) {
-        errorsR.password = 'La contraseña debe tener entre 8 y 16 caracteres';
+    if (values.password.length < 3 || values.password.length > 16) {
+        errorsR.password = 'La contraseña debe tener entre 3 y 16 caracteres';
     }
     if (!values.password2) {
         errorsR.password2 = 'Contraseña requerida';
